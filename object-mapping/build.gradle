@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'me.champeau.jmh' version '0.7.3'
+}
+
+group = 'com.patotski'
+version = '1.0.0'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Compile-time code generation (annotation processor runs on the jmh source set).
+    jmh 'org.mapstruct:mapstruct:1.6.3'
+    jmhAnnotationProcessor 'org.mapstruct:mapstruct-processor:1.6.3'
+
+    // Runtime reflection-based.
+    jmh 'org.modelmapper:modelmapper:3.2.6'
+
+    // Runtime bytecode generation. Unmaintained since 2019 (last release 1.5.4).
+    jmh 'ma.glasnost.orika:orika-core:1.5.4'
+    // Force a modern Javassist so Orika's bytecode generation works on JDK 25
+    // (its transitive Javassist predates modern class-file versions).
+    jmh 'org.javassist:javassist:3.30.2-GA'
+}
+
+jmh {
+    jmhVersion = '1.37'
+    fork = 2
+    warmupIterations = 3
+    iterations = 5
+    resultFormat = 'JSON'
+}

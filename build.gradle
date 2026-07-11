@@ -1,0 +1,2 @@
+// Root of the JVM benchmark series. One module per "Lib X vs Y vs Z" battle.
+// Each module applies the JMH plugin and stands alone. See README.
