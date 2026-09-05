@@ -33,8 +33,9 @@ dependencies {
 
 jmh {
     jmhVersion = '1.37'
-    fork = 2
-    warmupIterations = 3
+    fork = 5
+    warmupIterations = 5
     iterations = 5
     resultFormat = 'JSON'
+    profilers = ['gc']
 }

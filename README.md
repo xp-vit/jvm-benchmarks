@@ -19,12 +19,12 @@ Methodology is deliberately strict, because that is the whole point:
 
 | Module | Question | Writeup |
 |---|---|---|
-| [`object-mapping`](object-mapping/) | MapStruct vs ModelMapper vs Orika vs hand-written | (link when published) |
+| [`object-mapping`](object-mapping/) | MapStruct vs ModelMapper vs Orika vs hand-written | [MapStruct vs ModelMapper vs Orika: the mapping tax](https://patotski.com/blog/mapstruct-vs-modelmapper-vs-orika/) |
 
 ## Run a battle
 
 ```bash
-./gradlew :object-mapping:jmh          # full run (2 forks, 3+5 iterations)
+./gradlew :object-mapping:jmh          # full run (5 forks, 5+5 iterations, gc profiler)
 # fast smoke (proves it runs, numbers not publishable):
 java -jar object-mapping/build/libs/object-mapping-1.0.0-jmh.jar -f 1 -wi 1 -i 2 -w 1s -r 1s
 ```
@@ -46,7 +46,7 @@ can be measured; the maintained libraries need no such flag.
 ## Hardware disclosure
 
 Every published number states the box. Primary: AMD Ryzen 9 7950X3D (16C/32T),
-96 GB RAM, Manjaro Linux (kernel 6.12.94), Amazon Corretto JDK 25.0.3. CI (GitHub
+96 GB RAM, Manjaro Linux (kernel 6.12.103), Amazon Corretto JDK 25.0.3. CI (GitHub
 Actions) is a smoke test only; shared runners are too noisy for publishable numbers.
 
 ## Versions

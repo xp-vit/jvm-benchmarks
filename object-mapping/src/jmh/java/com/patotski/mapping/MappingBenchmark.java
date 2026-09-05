@@ -29,12 +29,12 @@ import java.util.concurrent.TimeUnit;
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @State(Scope.Benchmark)
-@Warmup(iterations = 3, time = 1)
+@Warmup(iterations = 5, time = 1)
 @Measurement(iterations = 5, time = 1)
 // Orika 1.5.4 reflects into java.lang (CloneableConverter), which the JDK module
 // system blocks by default since JDK 16. An unmaintained library needs this flag
 // just to start on JDK 25. The maintained libraries do not.
-@Fork(value = 2, jvmArgsAppend = "--add-opens=java.base/java.lang=ALL-UNNAMED")
+@Fork(value = 5, jvmArgsAppend = "--add-opens=java.base/java.lang=ALL-UNNAMED")
 public class MappingBenchmark {
 
     private Person source;
